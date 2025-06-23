@@ -1,5 +1,6 @@
 # test_db
-Une base de données d'exemple avec une suite de tests intégrée, utilisée pour tester vos applications et serveurs de bases de données.
+Une base de données d'exemple avec une suite de tests intégrée, 
+utilisée pour tester vos applications et serveurs de bases de données.
 
 Ce dépôt a été migré depuis [Launchpad](https://launchpad.net/test-db).
 
@@ -7,14 +8,22 @@ Voir l'utilisation dans la [documentation MySQL](https://dev.mysql.com/doc/emplo
 
 ## Origine
 
-Les données originales ont été créées par Fusheng Wang et Carlo Zaniolo chez Siemens Corporate Research. Les données sont au format XML.
+Les données originales ont été créées par Fusheng Wang et Carlo Zaniolo chez Siemens Corporate Research. 
+Les données sont au format XML.
 http://timecenter.cs.aau.dk/software.htm
 
 Giuseppe Maxia a créé le schéma relationnel et Patrick Crews a exporté les données en format relationnel.
 
-La base de données contient environ 300 000 enregistrements d'employés avec 2,8 millions d'entrées de salaires. Les données exportées font 167 Mo, ce qui n'est pas énorme, mais suffisamment lourd pour être non trivial lors des tests.
+La base de données contient environ 300 000 enregistrements d'employés avec 2,8 millions d'entrées de salaires. 
+Les données exportées font 167 Mo, 
+ce qui n'est pas énorme, 
+mais suffisamment lourd pour être non trivial lors des tests.
 
-Les données ont été générées, et en tant que telles, il y a des incohérences et des problèmes subtils. Plutôt que de les supprimer, nous avons décidé de laisser le contenu intact et d'utiliser ces problèmes comme exercices de nettoyage de données.
+Les données ont été générées, 
+et en tant que telles, 
+il y a des incohérences et des problèmes subtils. 
+Plutôt que de les supprimer, 
+nous avons décidé de laisser le contenu intact et d'utiliser ces problèmes comme exercices de nettoyage de données.
 
 ## Prérequis
 
@@ -88,8 +97,13 @@ Par exemple :
 
 ## AVERTISSEMENT
 
-À ma connaissance, ces données sont fictives et ne correspondent pas à des personnes réelles. Toute ressemblance avec des personnes existantes est purement fortuite.
+À ma connaissance, 
+ces données sont fictives et ne correspondent pas à des personnes réelles. 
+Toute ressemblance avec des personnes existantes est purement fortuite.
 
 ## LICENCE
 
-Ce travail est sous licence Creative Commons Attribution-Share Alike 3.0 Unported License. Pour consulter une copie de cette licence, visitez http://creativecommons.org/licenses/by-sa/3.0/ ou envoyez une lettre à Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+Ce travail est sous licence Creative Commons Attribution-Share Alike 3.0 Unported License. 
+Pour consulter une copie de cette licence, 
+visitez http://creativecommons.org/licenses/by-sa/3.0/ ou envoyez une lettre à Creative Commons, 
+171 Second Street, Suite 300, San Francisco, California, 94105, USA.
