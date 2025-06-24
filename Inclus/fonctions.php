@@ -1,9 +1,9 @@
 <?php 
-    require("dbconnect.php");
+    require("connexion.php");
 
     function afficherLesDepartements(){
         $bdd = dbconnect();
-        $sql = "SELECT * FROM departments";
+        $sql = "SELECT * FROM departments;";
         $req = mysqli_query($bdd,$sql );
         $result = array();
         while ($news = mysqli_fetch_assoc($req)) {

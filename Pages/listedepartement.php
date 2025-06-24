@@ -11,11 +11,10 @@
 </head>
 <body>
     <main>
-        <table>
+        <table >
             <tr>
-                <th>numero de departements</th>
-            </tr>
-            <tr>
+                <th>numero de departements </th>
+            
                 <th>nom de departements</th>
             </tr>
 
