@@ -26,4 +26,19 @@
         return $result; 
     }
     
+    function getEmployeesDepart(){
+        $bdd = dbconnect();
+        $sql = "SELECT * FROM departments
+            From 
+        ";
+        $req = mysqli_query($bdd,$sql );
+        $result = array();
+        while ($news = mysqli_fetch_assoc($req)) {
+            $result[] = $news;
+        }
+        mysqli_free_result($req);
+        return $result;
+    }
+
+    
 ?>
