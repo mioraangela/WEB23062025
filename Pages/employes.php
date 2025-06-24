@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <main>
+        <table>
+            <tr>
+                <th></th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </main>
 </body>
 </html>
