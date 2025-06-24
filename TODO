@@ -1,15 +1,28 @@
 - LISTE DES DEPARTEMENTS :
-    -
-    - 
+    
+    -   Fonction
+        creer fonction liste departements
+        
+    -   HTML
+        afficher tableau liste departements
+        mettre en lien sur chaque nom departement vers la page Employes pour afficher chaque employes de chaque numero de departements
 
-- BASE :
-    -
-    - 
+    -   CSS
+        utiliser Bootstrap
+
+    - BASE :
+        lister departement 
+        rajouter une colonne qui affiche le nom du  manager en cours
 
 - EMPLOYES PAR DEPARTEMENT :
-    -
-    -
+    -   Base:
+        lister les employees pour le numero de departement
 
-- FONCTIONS :
-    -
-    -
+    -   Fonctions:
+        creer liste les employees pour le numero de departement
+
+    -   HTML
+        tableau pour afficher les employees
+
+    -   CSS
+        Bootstrap
