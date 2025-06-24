@@ -25,7 +25,7 @@
             ?>
                 <tr>
                     <td><?= $departement['dept_no']?></td>
-                    <td><a href="employes.php?id=<?= $idDepart?>"><?= $nomDepart?></a></td>
+                    <td><a href="employes.php?id=<?= $idDepart['dept_no']?>"><?= $nomDepart?></a></td>
                 </tr>
             <?php } ?>
         </table>
