@@ -19,7 +19,7 @@
             FROM departments
             WHERE dept_name ='%s';
         ";
-        $sql = sprintf($sql, $nomDepartement);
+        $sql = sprintf($sql, $nomDepartment);
         $req = mysqli_query($bdd,$sql);
         $result = mysqli_fetch_assoc($req);
         mysqli_free_result($req);

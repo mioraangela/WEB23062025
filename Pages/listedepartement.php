@@ -1,6 +1,7 @@
 <?php 
     require("../Inclus/fonctions.php");
     $departements = afficherLesDepartements();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
 </head>
 <body>
     <main>
-        <table >
+        <table>
             <tr>
                 <th>numero de departements </th>
             
@@ -19,9 +20,12 @@
             </tr>
 
             <?php foreach($departements as $departement) { ?>
+            <?php $nomDepart = $departement['dept_name'];
+                $idDepart = getIdDepartment($nomDepart);
+            ?>
                 <tr>
                     <td><?= $departement['dept_no']?></td>
-                    <td><a href="employes.php?id="><?= $departement['dept_name']?></a></td>
+                    <td><a href="employes.php?id=<?= $idDepart?>"><?= $nomDepart?></a></td>
                 </tr>
             <?php } ?>
         </table>
