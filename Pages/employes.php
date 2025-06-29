@@ -21,15 +21,22 @@
                 <th> Sexe</th>
                 <th> Date de recrutement</th>
             </tr>
-            <?php foreach($employees as $employe){?>
-                <tr>
-                    <td><?=$employe['dept_no']?></td>
-                    <td><?=$employe['dept_name']?></td>
-                    <td><?=$employe['birth_date']?></td>
-                    <td><?=$employe['last_name']?> <?=$employe['first_name']?></td>
-                    <td><?=$employe['gender']?></td>
-                    <td><?=$employe['hire_date']?></td>
-                </tr>
+            <?php foreach($employees as $employe){
+                $idEmploye = $employe['emp_no']; 
+            ?>
+                <a href="ficheEmploye.php?id=<?= $idEmploye?>">
+                    <tr onclick="window.location='ficheEmploye.php?id=<?= $idEmploye?>';"
+                        style="cursor:pointer;"
+                    >
+                        <td><?=$employe['dept_no']?></td>
+                        <td><?=$employe['dept_name']?></td>
+                        <td><?=$employe['birth_date']?></td>
+                        <td><?=$employe['last_name']?> <?=$employe['first_name']?></td>
+                        <td><?=$employe['gender']?></td>
+                        <td><?=$employe['hire_date']?></td>
+                    </tr>
+                </a>
+
             <?php } ?>
         </table>
     </main>
