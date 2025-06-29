@@ -63,6 +63,32 @@
         return $result;
     }
 
+    function getSalaryHistoryParId($idEmploye){
+        $bdd = dbconnect();
+        $sql = "SELECT salaries.emp_no, titles.title, 
+        salaries.salary, departments.dept_name,
+        salaries.from_date, salaries.to_date
+        FROM salaries
+        Join employees
+        on employees.emp_no = salaries.emp_no
+        Join titles
+        on employees.emp_no = titles.emp_no
+        Join dept_emp
+        on employees.emp_no = dept_emp.emp_no
+        Join departments
+        on departments.dept_no = dept_emp.dept_no
+        Where salaries.emp_no ='%s'
+        ";
+        $sql = sprintf($sql, $idEmploye);
+        $req = mysqli_query($bdd,$sql );
+        $result = array();
+        while ($news = mysqli_fetch_assoc($req)) {
+            $result[] = $news;
+        }
+        mysqli_free_result($req);
+        return $result;
+    }
+
     function getEmployeesParDepartParId($idDepart){
         $bdd = dbconnect();
         $sql = "SELECT departments.dept_no, departments.dept_name
