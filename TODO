@@ -26,6 +26,16 @@
 
     -   HTML
         ok tableau pour afficher les employees
+        ok mettre un lien vers Page ficheEmploye pour afficher le fiche Employer
 
     -   CSS
+        Bootstrap
+- Fiche EMPLOYES :
+    -   Base:
+        ok afficher l information de l employe selectionner selectionner
+    - Fonction:
+        ok creer fonction pour avoir l employe par idEmployees
+    -   HTML : 
+        ok fiche pour afficher le nom de l employe selectionner
+    -   CSS:
         Bootstrap
