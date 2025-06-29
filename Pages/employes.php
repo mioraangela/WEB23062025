@@ -2,8 +2,6 @@
     require("../Inclus/fonctions.php");
     $idDepart = $_GET['id'];
     $employees = getEmployeesParDepartParId($idDepart);
-    $count = 1;
-    $next = getNextEmployees($nomEmployer,$departName,$ageMin,$ageMax,$count);
 ?>
 <!DOCTYPE html>
 <html lang="en">
