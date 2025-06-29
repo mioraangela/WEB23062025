@@ -1,7 +1,6 @@
 <?php 
     require("../Inclus/fonctions.php");
-    $departements = afficherLesDepartements();
-    
+    $departements = getCurrentManager();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,17 +16,22 @@
                 <th>numero de departements </th>
             
                 <th>nom de departements</th>
+                <th> Managers </th>
             </tr>
 
             <?php foreach($departements as $departement) { ?>
-            <?php $nomDepart = $departement['dept_name'];
-                $idDepart = getIdDepartment($nomDepart);
-            ?>
-                <tr>
-                    <td><?= $departement['dept_no']?></td>
-                    <td><a href="employes.php?id=<?= $idDepart['dept_no']?>"><?= $nomDepart?></a></td>
-                </tr>
+                <?php $nomDepart = $departement['dept_name'];
+                    $idDepart = getIdDepartment($nomDepart);
+                    $first_name = $departement['first_name'];
+                    $last_name = $departement['last_name'];
+                ?>
+                    <tr>
+                        <td><?= $departement['dept_no']?></td>
+                        <td><a href="employes.php?id=<?= $idDepart['dept_no']?>"><?= $nomDepart?></a></td>
+                        <td><?= $last_name?> <?= $first_name?> </td>
+                    </tr>
             <?php } ?>
+
         </table>
     </main>
 </body>
