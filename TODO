@@ -52,4 +52,25 @@
         ok formulaire entree nom Employer
         ok formulaire entree age min de type nombre
         ok formulaire entree age max type nombre
+        tableau afficher nom employe, nom departement, age
     -   CSS:
+-    affiche Employer:
+    -   Base:
+        afficher 20 lignes
+            ok nom departement
+            ok nom employe
+            ok trier entre age min et max
+    -   Fonction:
+            ok appelle fonction afficher employees
+    -   HTML
+            ok tableau pour afficher les employees
+        creer une fonction pour afficher
+            ok nom departement
+            ok nom employe
+            ok age
+            parametre 
+                ok nom departement
+                ok nom Employer
+                ok age min
+                ok age max
+    -   HTML:
