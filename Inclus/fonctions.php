@@ -28,9 +28,39 @@
     
     function getEmployeesDepart(){
         $bdd = dbconnect();
-        $sql = "SELECT * FROM departments
-            From 
+        $sql = "SELECT departments.dept_no, departments.dept_name
+        , employees.birth_date,employees.first_name, 
+        employees.last_name, employees.gender, 
+        employees.hire_date
+        FROM departments
+        Join dept_emp
+        on departments.dept_no = dept_emp.dept_no
+        Join employees
+        on dept_emp.emp_no = employees.emp_no
         ";
+        $req = mysqli_query($bdd,$sql );
+        $result = array();
+        while ($news = mysqli_fetch_assoc($req)) {
+            $result[] = $news;
+        }
+        mysqli_free_result($req);
+        return $result;
+    }
+
+    function getEmployeesParDepartParId($idDepart){
+        $bdd = dbconnect();
+        $sql = "SELECT departments.dept_no, departments.dept_name
+        , employees.birth_date,employees.first_name, 
+        employees.last_name, employees.gender,
+        employees.hire_date
+        FROM departments
+        Join dept_emp
+        on departments.dept_no = dept_emp.dept_no
+        Join employees
+        on dept_emp.emp_no = employees.emp_no
+        Where departments.dept_no ='%s'
+        ";
+        $sql = sprintf($sql, $idDepart);
         $req = mysqli_query($bdd,$sql );
         $result = array();
         while ($news = mysqli_fetch_assoc($req)) {
