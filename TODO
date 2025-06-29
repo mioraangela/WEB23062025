@@ -19,13 +19,13 @@
 
 - EMPLOYES PAR DEPARTEMENT :
     -   Base:
-        lister les employees pour le numero de departement
+        ok lister les employees pour le numero de departement
 
     -   Fonctions:
-        creer liste les employees pour le numero de departement
+        ok creer liste les employees pour le numero de departement
 
     -   HTML
-        tableau pour afficher les employees
+        ok tableau pour afficher les employees
 
     -   CSS
         Bootstrap
