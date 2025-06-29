@@ -1,0 +1,28 @@
+<?php 
+    require("../Inclus/fonctions.php");
+    $departments = afficherLesDepartements();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="listedepartement.php">Liste des departements</a>
+    <br><br>
+    <form action="" method="Post">
+        <p>Nom employe <input type="text" id="nom" name="nom">  </p>
+        <select name="departments" id="departments">
+            <option value="">Choissiser le departement</option>
+            <?php foreach ($departments as $department) { ?>
+                <option value="<?= $department['dept_name']?>"><?=$department['dept_name']?></option>
+            <?php }?>
+        </select>
+        <p> age min <input type="number" id="ageMin" name="ageMin"></p>
+        <p> age max <input type="number" id="ageMax" name="ageMax"></p>
+        <input type="submit" value="rechercher">
+    </form>
+</body>
+</html>
