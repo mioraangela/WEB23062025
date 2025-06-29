@@ -1,6 +1,7 @@
 <?php 
     require("../Inclus/fonctions.php");
     $departments = afficherLesDepartements();
+    $ages = getMinEtMaxAge();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,16 +13,22 @@
 <body>
     <a href="listedepartement.php">Liste des departements</a>
     <br><br>
-    <form action="" method="Post">
+    <form action="afficherEmployees.php" method="Post">
         <p>Nom employe <input type="text" id="nom" name="nom">  </p>
+        
         <select name="departments" id="departments">
             <option value="">Choissiser le departement</option>
             <?php foreach ($departments as $department) { ?>
                 <option value="<?= $department['dept_name']?>"><?=$department['dept_name']?></option>
             <?php }?>
         </select>
-        <p> age min <input type="number" id="ageMin" name="ageMin"></p>
-        <p> age max <input type="number" id="ageMax" name="ageMax"></p>
+
+        <?php foreach ($ages as $age) { ?>
+            <p> Selectionner entre <?= $age['age_min']?> a <?= $age['age_max']?> </p>
+        <?php } ?>
+
+            <p> age min <input type="number" id="ageMin" name="ageMin"></p>
+            <p> age max <input type="number" id="ageMax" name="ageMax"></p>
         <input type="submit" value="rechercher">
     </form>
 </body>
