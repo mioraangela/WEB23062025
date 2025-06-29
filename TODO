@@ -3,6 +3,7 @@
     -   Fonction
         ok creer fonction liste departements
         ok creer fonction pour avoir le numero departement selon le nom du departement
+        creer fonction pour afficher le nom du manager en cours
         
     -   HTML
         ok afficher tableau liste departements
@@ -14,7 +15,7 @@
     - BASE :
         ok lister departement 
         ok get numero departement selon le nom de departement
-        rajouter une colonne qui affiche le nom du  manager en cours
+        affiche le nom du  manager en cours pour chaque departement
 
 - EMPLOYES PAR DEPARTEMENT :
     -   Base:
