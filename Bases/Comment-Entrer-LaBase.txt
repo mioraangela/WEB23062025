@@ -1,2 +1,2 @@
-cd /opt/lampp/bin
-sudo ./mysql -u root -p nomdeBase < nom de repertoire parent/employees.sql
+cd le repertoire /Bases de ce projet
+sudo /opt/lampp/bin/mysql -u root -p < employees.sql
