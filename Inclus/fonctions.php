@@ -54,7 +54,7 @@
         $departName = mysqli_real_escape_string($bdd, $departName);
         $ageMin = (int)$ageMin;
         $ageMax = (int)$ageMax;
-        
+
         $sql = "SELECT departments.dept_no, departments.dept_name
         , employees.birth_date,employees.first_name, 
         employees.last_name, employees.gender, 
@@ -84,6 +84,73 @@
         mysqli_free_result($req);
         return $result;
     }
+
+    function getNextEmployees($nomEmployer, $departName, $ageMin, $ageMax, $offset, $itemsPerPage){
+        $bdd = dbconnect();
+
+        // Sécuriser les entrées
+        $nomEmployer = mysqli_real_escape_string($bdd, $nomEmployer);
+        $departName = mysqli_real_escape_string($bdd, $departName);
+        $ageMin = (int)$ageMin;
+        $ageMax = (int)$ageMax;
+
+        $sql = "SELECT departments.dept_no, departments.dept_name,
+                    employees.birth_date, employees.first_name, 
+                    employees.last_name, employees.gender, 
+                    employees.emp_no, 
+                    TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) AS age
+                FROM departments
+                JOIN dept_emp ON departments.dept_no = dept_emp.dept_no
+                JOIN employees ON dept_emp.emp_no = employees.emp_no
+                WHERE TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) BETWEEN $ageMin AND $ageMax
+                AND (
+                        employees.first_name COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%' OR
+                        employees.last_name COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%' OR
+                        CONCAT(employees.last_name, ' ', employees.first_name) COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%' OR
+                        CONCAT(employees.first_name, ' ', employees.last_name) COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%'
+                )
+                AND departments.dept_name COLLATE utf8mb4_general_ci LIKE '%$departName%'
+                LIMIT $offset, $itemsPerPage";
+
+        $req = mysqli_query($bdd, $sql);
+        $result = array();
+        while ($news = mysqli_fetch_assoc($req)) {
+            $result[] = $news;
+        }
+        mysqli_free_result($req);
+        return $result;
+    }
+
+
+    function getTotalEmployees($nomEmployer, $departName, $ageMin, $ageMax){
+        $bdd = dbconnect();
+
+        // Sécuriser les entrées
+        $nomEmployer = mysqli_real_escape_string($bdd, $nomEmployer);
+        $departName = mysqli_real_escape_string($bdd, $departName);
+        $ageMin = (int)$ageMin;
+        $ageMax = (int)$ageMax;
+
+        $sql = "SELECT COUNT(*) as total
+                FROM departments
+                JOIN dept_emp ON departments.dept_no = dept_emp.dept_no
+                JOIN employees ON dept_emp.emp_no = employees.emp_no
+                WHERE TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) BETWEEN $ageMin AND $ageMax
+                AND (
+                        employees.first_name COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%' OR
+                        employees.last_name COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%' OR
+                        CONCAT(employees.last_name, ' ', employees.first_name) COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%' OR
+                        CONCAT(employees.first_name, ' ', employees.last_name) COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%'
+                )
+                AND departments.dept_name COLLATE utf8mb4_general_ci LIKE '%$departName%'";
+
+        $req = mysqli_query($bdd, $sql);
+        $total = mysqli_fetch_assoc($req)['total'];
+        mysqli_free_result($req);
+        
+        return $total;
+    }
+
 
      function getMinEtMaxAge(){
         $bdd = dbconnect();
@@ -188,26 +255,5 @@
         mysqli_free_result($req);
         return $result;
     }
-
-    "SELECT departments.dept_no, departments.dept_name
-        , employees.birth_date,employees.first_name, 
-        employees.last_name, employees.gender, 
-        employees.emp_no, 
-        TIMESTAMPDIFF( YEAR, employees.birth_date, CURDATE()) AS age
-        FROM departments
-        Join dept_emp
-        on departments.dept_no = dept_emp.dept_no
-        Join employees
-        on dept_emp.emp_no = employees.emp_no
-        where TimeSTAMPDIFF( YEAR, employees.birth_date, CURDATE())>= $ageMin
-        AND TimeSTAMPDIFF( YEAR, employees.birth_date, CURDATE()) <= $ageMax
-        AND (
-            employees.first_name COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%' OR
-            employees.last_name COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%'OR
-            CONCAT(employees.last_name, ' ', employees.first_name) COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%' OR
-            CONCAT(employees.first_name, ' ', employees.last_name) COLLATE utf8mb4_general_ci LIKE '%$nomEmployer%'
-        )
-        AND departments.dept_name COLLATE utf8mb4_general_ci LIKE '%$departName%'
-        LIMIT 20"
     
 ?>
