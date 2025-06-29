@@ -42,3 +42,14 @@
         ok tableau affiche historique salaire et emploie occuper
     -   CSS:
         Bootstrap
+-   index :
+    -   Base:
+        
+    -   Fonction:
+        ok appelle fonction departement
+    -   HTML:
+        ok formulaire selection de departements
+        ok formulaire entree nom Employer
+        ok formulaire entree age min de type nombre
+        ok formulaire entree age max type nombre
+    -   CSS:
