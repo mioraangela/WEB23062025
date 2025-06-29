@@ -8,13 +8,13 @@
     -   HTML
         ok afficher tableau liste departements
         ok mettre en lien sur chaque nom departement vers la page Employes pour afficher chaque employes de chaque numero de departements
-        mettre une troisieme colonne pour afficher le nom du manager courant
+        ok mettre une troisieme colonne pour afficher le nom du manager courant
     -   CSS
         utiliser Bootstrap
 
     - BASE :
         ok lister departement 
-        ok get numero departement selon le nom de departement
+        ok getnumero departement selon le nom de departement
         ok affiche le nom du  manager en cours pour chaque departement
 
 - EMPLOYES PAR DEPARTEMENT :
