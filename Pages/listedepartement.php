@@ -13,9 +13,9 @@
     <main>
         <table>
             <tr>
-                <th>numero de departements </th>
+                <th>Numero de departements </th>
             
-                <th>nom de departements</th>
+                <th>Nom de departements</th>
                 <th> Managers </th>
             </tr>
 
