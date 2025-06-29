@@ -2,6 +2,7 @@
     require("../Inclus/fonctions.php");
     $idEmployer=$_GET['id'];
     $employer = getEmployeesParId($idEmployer);
+    $salaires = getSalaryHistoryParId($idEmployer);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,25 @@
         <p>Sexe: <?=$info['gender']?></p>
         <p>Date de recrutement: <?=$info['hire_date']?></p>
     <?php } ?>
+    <br>
+    <table>
+        <tr>
+            <th>Emploi occuper</th>
+            <th>Salaire</th>
+            <th>Nom de departement</th>
+            <th>Date debut</th>
+            <th>Date fin</th>
+        </tr>
+        <?php foreach($salaires as $salaire){?>
+            <tr>
+                <td><?= $salaire['title']?></td>
+                <td><?= $salaire['salary']?></td>
+                <td><?= $salaire['dept_name']?></td>
+                <td><?= $salaire['from_date']?></td>
+                <td><?= $salaire['to_date']?></td>
+            </tr>
+        <?php } ?>
+    </table>
     
 </body>
 </html>
