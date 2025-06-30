@@ -5,17 +5,17 @@
     if($_SERVER['REQUEST_METHOD'] ==='GET'){
         if(isset($_GET['page'])){
             $page =$_GET['page'];
-            $nomEmployer = $_SESSION['nom'];
-            $departName = $_SESSION['departments'];
-            $ageMin = $_SESSION['ageMin'];
-            if($_SESSION['ageMax'] == ""){
+            $nomEmployer = $_GET['nom'];
+            $departName = $_GET['departments'];
+            $ageMin = $_GET['ageMin'];
+            if($_GET['ageMax'] ==""){
                 foreach($numbers as $number){
                     $max = $number['age_max'];
                     $ageMax = $max;
                 }
             }
             else{
-                $ageMax = $_SESSION['ageMax'];
+                $ageMax = $_GET['ageMax'];
             }
         }
     }
@@ -27,7 +27,6 @@
         if($_POST['ageMax'] == ""){
             foreach($numbers as $number){
                 $max = $number['age_max'];
-                $_SESSION['min'] = $number['age_min'];
                 $ageMax = $max;
             }
         }
@@ -35,15 +34,9 @@
             $ageMax = $_POST['ageMax'];
         }
         
-        $min = (int) $_SESSION['min'];
-        $ageNumMin = (int) $ageMin;
-        if($nomEmployer=="" || $ageMin =="" || $ageNumMin < $min){
+        if($nomEmployer==""|| $departName == ""){
             header("location: index.php?error=1");
         }
-        $_SESSION['nom'] = $_POST['nom'];
-        $_SESSION['departments'] = $_POST['departments'];
-        $_SESSION['ageMin'] = $_POST['ageMin'];
-        $_SESSION['ageMax'] = $_POST['ageMax'];
         $page = 1;
     }
 
@@ -88,11 +81,11 @@
     <!-- Pagination : Previous & Next -->
     <div>
         <?php if ($page > 1){?>
-            <a href="?page=<?=$page - 1?>">Previous</a>
+            <a href="?page=<?=$page - 1?>&&nom=<?= $nomEmployer?>&&departments=<?= $departName ?>&&ageMin=<?= $ageMin ?>&&ageMax=<?= $ageMax?>">Previous</a>
         <?php } ?>
             <span> Page <?=$page?> sur <?=$totalPages?></span>
         <?php if ($page < $totalPages){?>
-            <a href="?page=<?=$page + 1?>">Next</a>
+            <a href="?page=<?=$page + 1?>&&nom=<?= $nomEmployer?>&&departments=<?= $departName ?>&&ageMin=<?= $ageMin ?>&&ageMax=<?= $ageMax?>">Next</a>
         <?php }?>
     </div>
     <div>
