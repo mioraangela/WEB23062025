@@ -17,7 +17,7 @@
         <p>Nom employe <input type="text" id="nom" name="nom">  </p>
         
         <select name="departments" id="departments">
-            <option value="">Choissiser le departement</option>
+            <option value="">Choisisser le departement</option>
             <?php foreach ($departments as $department) { ?>
                 <option value="<?= $department['dept_name']?>"><?=$department['dept_name']?></option>
             <?php }?>
