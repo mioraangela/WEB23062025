@@ -60,16 +60,17 @@
             ok nom departement
             ok nom employe
             ok trier entre age min et max
-        afficher les 20 prochaines lignes
-        afficher les 20 lignes precedentes
+        ok afficher les 20 prochaines lignes
+        ok afficher les 20 lignes precedentes
     -   Fonction:
             ok appelle fonction afficher employees
-            creer fonction afficher 20 prochaines lignes
-            creer fonction afficher 20 lignes precedentes
+            ok creer fonction pour le nombre totale des employes
+            ok creer fonction afficher 20 prochaines lignes
+            ok creer fonction afficher 20 lignes precedentes
     -   HTML
             ok tableau pour afficher les employees
-            lien afficher les 20 prochaines lignes
-            lien afficher les 20 lignes precedentes
+            ok lien afficher les 20 prochaines lignes
+            ok lien afficher les 20 lignes precedentes
         creer une fonction pour afficher
             ok nom departement
             ok nom employe

@@ -12,6 +12,9 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <a href="index.php">home</a>
+    </div>
     <?php foreach($employer as $info){ ?>
         <p>Nom: <?= $info['last_name']?></p>
         <p>Prenom: <?=$info['first_name']?></p>

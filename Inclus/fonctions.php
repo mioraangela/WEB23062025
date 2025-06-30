@@ -111,7 +111,6 @@
                 )
                 AND departments.dept_name COLLATE utf8mb4_general_ci LIKE '%$departName%'
                 LIMIT $offset, $itemsPerPage";
-
         $req = mysqli_query($bdd, $sql);
         $result = array();
         while ($news = mysqli_fetch_assoc($req)) {
@@ -121,11 +120,12 @@
         return $result;
     }
 
+    
+
 
     function getTotalEmployees($nomEmployer, $departName, $ageMin, $ageMax){
         $bdd = dbconnect();
 
-        // Sécuriser les entrées
         $nomEmployer = mysqli_real_escape_string($bdd, $nomEmployer);
         $departName = mysqli_real_escape_string($bdd, $departName);
         $ageMin = (int)$ageMin;
@@ -233,6 +233,23 @@
         while ($news = mysqli_fetch_assoc($req)) {
             $result[] = $news;
         }
+        mysqli_free_result($req);
+        return $result;
+    }
+
+    function getTotalEmployeesParDepartParId($idDepart){
+        $bdd = dbconnect();
+        $sql = "SELECT Count(*) AS count
+        FROM departments
+        Join dept_emp
+        on departments.dept_no = dept_emp.dept_no
+        Join employees
+        on dept_emp.emp_no = employees.emp_no
+        Where departments.dept_no ='%s'
+        ";
+        $sql = sprintf($sql, $idDepart);
+        $req = mysqli_query($bdd, $sql);
+        $result = mysqli_fetch_assoc($req);
         mysqli_free_result($req);
         return $result;
     }

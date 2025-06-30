@@ -11,10 +11,12 @@
 </head>
 <body>
     <main>
+        <div>
+            <a href="index.php">home</a>
+        </div>
         <table>
             <tr>
                 <th>Numero de departements </th>
-            
                 <th>Nom de departements</th>
                 <th> Managers </th>
             </tr>

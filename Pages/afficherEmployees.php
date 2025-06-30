@@ -1,18 +1,48 @@
 <?php 
     require("../Inclus/fonctions.php");
-    if(isset($_GET['page'])){
-        $page =$_GET['page'];
+    session_start();
+    $numbers = getMinEtMaxAge();
+    if($_SERVER['REQUEST_METHOD'] ==='GET'){
+        if(isset($_GET['page'])){
+            $page =$_GET['page'];
+            $nomEmployer = $_SESSION['nom'];
+            $departName = $_SESSION['departments'];
+            $ageMin = $_SESSION['ageMin'];
+            if($_SESSION['ageMax'] == ""){
+                foreach($numbers as $number){
+                    $max = $number['age_max'];
+                    $ageMax = $max;
+                }
+            }
+            else{
+                $ageMax = $_SESSION['ageMax'];
+            }
+        }
     }
     else{
+        $nomEmployer = $_POST['nom'];
+        $departName = $_POST['departments'];
+        $ageMin = $_POST['ageMin'];
+        $ageMax = $_POST['ageMax'];
+        if($_POST['ageMax'] == ""){
+            foreach($numbers as $number){
+                $max = $number['age_max'];
+                $ageMax = $max;
+            }
+        }
+        else{
+            $ageMax = $_POST['ageMax'];
+        }
+
+        if($nomEmployer=="" || $ageMin ==""){
+            header("location: index.php?error=1");
+        }
+        $_SESSION['nom'] = $_POST['nom'];
+        $_SESSION['departments'] = $_POST['departments'];
+        $_SESSION['ageMin'] = $_POST['ageMin'];
+        $_SESSION['ageMax'] = $_POST['ageMax'];
         $page = 1;
     }
-    $nomEmployer = $_POST['nom'];
-    $departName = $_POST['departments'];
-    $ageMin = $_POST['ageMin'];
-    $ageMax = $_POST['ageMax'];
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-
 
     // Nombre d'éléments par page
     $itemsPerPage = 20;
@@ -25,6 +55,7 @@
 
     // Calcul du nombre total de pages
     $totalEmployees = getTotalEmployees($nomEmployer, $departName, $ageMin, $ageMax);
+    $totalEmployees;
     $totalPages = ceil($totalEmployees / $itemsPerPage);
 ?>
 
@@ -53,15 +84,16 @@
     
     <!-- Pagination : Previous & Next -->
     <div>
-        <?php if ($page > 1): ?>
+        <?php if ($page > 1){?>
             <a href="?page=<?=$page - 1?>">Previous</a>
-        <?php endif; ?>
-
-        <span>Page <?=$page?> sur <?=$totalPages?></span>
-
-        <?php if ($page < $totalPages): ?>
+        <?php } ?>
+            <span> Page <?=$page?> sur <?=$totalPages?></span>
+        <?php if ($page < $totalPages){?>
             <a href="?page=<?=$page + 1?>">Next</a>
-        <?php endif; ?>
+        <?php }?>
+    </div>
+    <div>
+        <a href="index.php">home</a>
     </div>
 
 </body>

@@ -31,5 +31,9 @@
             <p> age max <input type="number" id="ageMax" name="ageMax"></p>
         <input type="submit" value="rechercher">
     </form>
+    <?php if(isset($_GET['error'])){ ?>
+            <h5>Veuillez remplir les Champs</h5>
+    <?php }?>
+    
 </body>
 </html>
