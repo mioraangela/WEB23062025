@@ -24,7 +24,7 @@
         </select>
 
         <?php foreach ($ages as $age) { ?>
-            <p> Selectionner entre <?= $age['age_min']?> a <?= $age['age_max']?> </p>
+            <p> Selectionner depuis le nombre <?= $age['age_min']?></p>
         <?php } ?>
 
             <p> age min <input type="number" id="ageMin" name="ageMin"></p>
