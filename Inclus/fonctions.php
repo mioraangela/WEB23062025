@@ -111,6 +111,7 @@
                 )
                 AND departments.dept_name COLLATE utf8mb4_general_ci LIKE '%$departName%'
                 LIMIT $offset, $itemsPerPage";
+
         $req = mysqli_query($bdd, $sql);
         $result = array();
         while ($news = mysqli_fetch_assoc($req)) {
@@ -227,6 +228,7 @@
         on dept_emp.emp_no = employees.emp_no
         Where departments.dept_no ='%s'
         ";
+        echo $sql;
         $sql = sprintf($sql, $idDepart);
         $req = mysqli_query($bdd,$sql );
         $result = array();
