@@ -215,7 +215,7 @@
         return $result;
     }
 
-    function getEmployeesParDepartParId($idDepart){
+    function getEmployeesParDepartParId($idDepart,$offset){
         $bdd = dbconnect();
         $sql = "SELECT departments.dept_no, departments.dept_name
         , employees.birth_date,employees.first_name,employees.emp_no, 
@@ -227,9 +227,9 @@
         Join employees
         on dept_emp.emp_no = employees.emp_no
         Where departments.dept_no ='%s'
+        LIMIT $offset,20
         ";
-        echo $sql;
-        $sql = sprintf($sql, $idDepart);
+        $sql = sprintf($sql, $idDepart,$offset);
         $req = mysqli_query($bdd,$sql );
         $result = array();
         while ($news = mysqli_fetch_assoc($req)) {
