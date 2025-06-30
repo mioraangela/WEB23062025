@@ -27,14 +27,17 @@
         if($_POST['ageMax'] == ""){
             foreach($numbers as $number){
                 $max = $number['age_max'];
+                $_SESSION['min'] = $number['age_min'];
                 $ageMax = $max;
             }
         }
         else{
             $ageMax = $_POST['ageMax'];
         }
-
-        if($nomEmployer=="" || $ageMin ==""){
+        
+        $min = (int) $_SESSION['min'];
+        $ageNumMin = (int) $ageMin;
+        if($nomEmployer=="" || $ageMin =="" || $ageNumMin < $min){
             header("location: index.php?error=1");
         }
         $_SESSION['nom'] = $_POST['nom'];
