@@ -43,16 +43,28 @@
     // Nombre d'éléments par page
     $itemsPerPage = 20;
 
-    // Calcul de l'offset (le nombre d'éléments à ignorer)
-    $offset = ($page - 1) * $itemsPerPage;
-
-    // Récupérer les employés de la page actuelle
-    $employees = getNextEmployees($nomEmployer, $departName, $ageMin, $ageMax, $offset, $itemsPerPage);
+   
 
     // Calcul du nombre total de pages
     $totalEmployees = getTotalEmployees($nomEmployer, $departName, $ageMin, $ageMax);
     $totalEmployees;
     $totalPages = ceil($totalEmployees / $itemsPerPage);
+    if($page <= 0){
+        $page = 1;
+        header("location: ?page=$page&&nom=$nomEmployer&&departments=$departName&&ageMin=$ageMin&&ageMax=$ageMax");
+        exit();
+    }
+    if($page > $totalPages){
+        $page = $totalPages;
+        header("location: ?page=$page&&nom=$nomEmployer&&departments=$departName&&ageMin=$ageMin&&ageMax=$ageMax");
+        exit();
+    }
+
+     // Calcul de l'offset (le nombre d'éléments à ignorer)
+    $offset = ($page - 1) * $itemsPerPage;
+
+    // Récupérer les employés de la page actuelle
+    $employees = getNextEmployees($nomEmployer, $departName, $ageMin, $ageMax, $offset, $itemsPerPage);
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +75,9 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <a href="index.php">home</a>
+    </div>
     <table>
         <tr>
             <th>Nom departement</th>
@@ -88,8 +103,19 @@
             <a href="?page=<?=$page + 1?>&&nom=<?= $nomEmployer?>&&departments=<?= $departName ?>&&ageMin=<?= $ageMin ?>&&ageMax=<?= $ageMax?>">Next</a>
         <?php }?>
     </div>
+    
+
     <div>
-        <a href="index.php">home</a>
+        <form action="" method="get">
+            <p>Naviguer vers la page 
+                <input type="number" name="page" id="page" required>
+            </p>
+            <input type="hidden" name="nom" value="<?= $nomEmployer?>">
+            <input type="hidden" name="departments" value="<?= $departName ?>">
+            <input type="hidden" name="ageMin" value="<?= $ageMin ?>">
+            <input type="hidden" name="ageMax" value="<?= $ageMax ?>">
+            <input type="submit" value="Valider">
+        </form>
     </div>
 
 </body>
