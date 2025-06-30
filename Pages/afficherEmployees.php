@@ -1,6 +1,11 @@
 <?php 
     require("../Inclus/fonctions.php");
-
+    if(isset($_GET['page'])){
+        $page =$_GET['page'];
+    }
+    else{
+        $page = 1;
+    }
     $nomEmployer = $_POST['nom'];
     $departName = $_POST['departments'];
     $ageMin = $_POST['ageMin'];
