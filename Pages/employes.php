@@ -92,7 +92,24 @@
                 <span>. . . . .</span>
                 <a href="?page=<?=$totalPages?>&&totalPage=<?=$totalPages?>&&idDepart=<?=$idDepart?>"><?=$totalPages?></a>
             
-            
+            <?php } else if($page > $totalPages - 4 && $page < $totalPages){ ?>
+                <a href="?page=<?=$page - 1?>&&totalPage=<?=$totalPages?>&&idDepart=<?=$idDepart?>"><<</a>
+                <?php if($page == $totalPages - 3) { ?>
+                    <?php for($i = 0; $i < 2;$i++){?>
+                        <span>
+                            <a href="?page=<?= $page + $i + 1?>&&totalPage=<?=$totalPages?>&&idDepart=<?=$idDepart?>"><?= $page + $i + 1?></a>
+                        </span>
+                    <?php } ?>
+                <?php } else if($page == $totalPages -2){?>
+                    <span>
+                        <a href="?page=<?= $page + 1?>&&totalPage=<?=$totalPages?>&&idDepart=<?=$idDepart?>"><?= $page + 1?></a>
+                    </span>
+                <?php } ?>
+                
+                <span>. . . . .</span>
+                <a href="?page=<?=$totalPages?>&&totalPage=<?=$totalPages?>&&idDepart=<?=$idDepart?>"><?=$totalPages?></a>
+                <a href="?page=<?=$page + 1?>&&totalPage=<?=$totalPages?>&&idDepart=<?=$idDepart?>"> >></a>  
+                
             <?php } else if($page == 1) { ?>
                 <span>
                     <?php for($i = 0; $i < 3;$i++){?>
