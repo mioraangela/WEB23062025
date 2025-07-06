@@ -279,5 +279,19 @@
         mysqli_free_result($req);
         return $result;
     }
+
+    function getListEmplois(){
+        $bdd = dbconnect();
+        $sql = "SELECT *
+            FROM v_liste_emplois;
+        ";
+        $req = mysqli_query($bdd,$sql);
+        $result = array();
+        while ($news = mysqli_fetch_assoc($req)) {
+            $result[] = $news;
+        }
+        mysqli_free_result($req);
+        return $result;
+    }
     
 ?>

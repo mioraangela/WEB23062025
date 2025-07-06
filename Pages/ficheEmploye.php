@@ -12,6 +12,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Fiche Employer</h1>
     <div>
         <a href="index.php">home</a>
     </div>

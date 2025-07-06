@@ -11,7 +11,10 @@
     <title>Document</title>
 </head>
 <body>
+    <h1> Home</h1>
     <a href="listedepartement.php">Liste des departements</a>
+    <br><br>
+    <a href="listeEmploies.php">Liste des emploies</a>  
     <br><br>
     <form action="afficherEmployees.php" method="Post">
         <p>Nom employe <input type="text" id="nom" name="nom">  </p>

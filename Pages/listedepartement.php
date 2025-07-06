@@ -12,6 +12,7 @@
 </head>
 <body>
     <main>
+        <h1> Liste des departements</h1>
         <div>
             <a href="index.php">home</a>
         </div>

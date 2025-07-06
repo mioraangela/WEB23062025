@@ -84,18 +84,19 @@
                 ok nom Employer
                 ok age min
                 ok age max
-    -   ListeEmployes:
+    -   ListeEmploies:
         HTML:
         - tableau affiche
-            nombre employer
-            sexe
-            salaire moyen pour chaque emploi
+            ok Nom des Emploies
+            ok Nombre Homme
+            ok Nombre Femme
+            ok Moyenne des Salaires<
         CSS:
-            utiliser Bootstrap
+            ok utiliser Bootstrap
         Base:
-            Creer vue pour afficher les employees par sexe
-            Creer vue pour regrouper tous les salaires de chaque emploi
-            Creer vue pour calculer la moyenne des salaires de chaque emploi
+            ok Creer vue pour afficher les nombres employees par sexe
+            ok Creer vue pour regrouper tous les salaires de chaque emploi
+            ok Creer vue pour calculer la moyenne des salaires de chaque emploi
         Fonction:
-            afficher employees par sexe
-            afficher salaire moyen pour chaque emploi
+            ok afficher employees par sexe
+            ok afficher salaire moyen pour chaque emploi
