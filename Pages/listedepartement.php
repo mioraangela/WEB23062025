@@ -1,6 +1,7 @@
 <?php 
     require("../Inclus/fonctions.php");
     $departements = getCurrentManager();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +15,13 @@
         <div>
             <a href="index.php">home</a>
         </div>
-        <table>
+        <table border ='1' style="border-collapse: collapse">
+
             <tr>
                 <th> Numero de departements </th>
                 <th> Nom de departements</th>
                 <th> Managers </th>
+                <th>Nombre des Employers</th>
             </tr>
 
             <?php foreach($departements as $departement) { ?>
@@ -31,6 +34,7 @@
                         <td><?= $departement['dept_no']?></td>
                         <td><a href="employes.php?id=<?= $idDepart['dept_no']?>"><?= $nomDepart?></a></td>
                         <td><?= $last_name?> <?= $first_name?> </td>
+                        <td> <?=$departement['nb_employees']?></td>
                     </tr>
             <?php } ?>
 

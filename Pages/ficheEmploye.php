@@ -23,8 +23,9 @@
         <p>Sexe: <?=$info['gender']?></p>
         <p>Date de recrutement: <?=$info['hire_date']?></p>
     <?php } ?>
+        <p> Emploi occuper: <?= $salaires[0]['title']?></p>
     <br>
-    <table>
+    <table border ='1' style="border-collapse: collapse">
         <tr>
             <th>Emploi occuper</th>
             <th>Salaire</th>

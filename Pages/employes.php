@@ -47,7 +47,7 @@
         <div>
             <a href="index.php">home</a>
         </div>
-        <table>
+        <table border ='1' style="border-collapse: collapse">
             <tr>
                 <th> Numero de departements </th>
                 <th> Nom de departements</th>

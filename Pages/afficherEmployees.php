@@ -78,7 +78,7 @@
     <div>
         <a href="index.php">home</a>
     </div>
-    <table>
+    <table border ='1' style="border-collapse: collapse">
         <tr>
             <th>Nom departement</th>
             <th>Nom Employer</th>

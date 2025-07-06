@@ -204,6 +204,7 @@
         Join departments
         on departments.dept_no = dept_emp.dept_no
         Where salaries.emp_no ='%s'
+        order by salaries.to_date DESC
         ";
         $sql = sprintf($sql, $idEmploye);
         $req = mysqli_query($bdd,$sql );
@@ -220,13 +221,13 @@
         $sql = "SELECT departments.dept_no, departments.dept_name
         , employees.birth_date,employees.first_name,employees.emp_no, 
         employees.last_name, employees.gender,
-        employees.hire_date
+        employees.hire_date, dept_emp.to_date
         FROM departments
         Join dept_emp
         on departments.dept_no = dept_emp.dept_no
         Join employees
         on dept_emp.emp_no = employees.emp_no
-        Where departments.dept_no ='%s'
+        Where departments.dept_no ='%s'&& dept_emp.to_date = '9999-01-01'
         LIMIT $offset,20
         ";
         $sql = sprintf($sql, $idDepart,$offset);
@@ -258,13 +259,17 @@
 
     function getCurrentManager(){
         $bdd = dbconnect();
-        $sql = "SELECT *
+        $sql = "SELECT d.dept_no, d.dept_name,
+            e.first_name, e.last_name, v.nb_employees
             FROM employees e
             Join dept_manager dm
             on e.emp_no = dm.emp_no
             Join departments d
             on d.dept_no = dm.dept_no
-            WHERE dm.to_date ='9999-01-01';
+            Join v_nb_employer_depart v
+            on d.dept_no = v.dept_no
+            WHERE dm.to_date ='9999-01-01'
+            Group by d.dept_no;
         ";
         $req = mysqli_query($bdd,$sql);
         $result = array();

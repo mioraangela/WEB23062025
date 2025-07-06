@@ -4,12 +4,13 @@
         ok creer fonction liste departements
         ok creer fonction pour avoir le numero departement selon le nom du departement
         ok creer fonction pour afficher le nom du manager en cours
+        ok creer une fonction pour la liste des employers par departements
         
     -   HTML
         ok afficher tableau liste departements
         ok mettre en lien sur chaque nom departement vers la page Employes pour afficher chaque employes de chaque numero de departements
         ok mettre une troisieme colonne pour afficher le nom du manager courant
-        colonne nombre employe sur la liste des departements
+        ok colonne nombre employe sur la liste des departements
     -   CSS
         utiliser Bootstrap
 
@@ -17,8 +18,8 @@
         ok lister departement 
         ok getnumero departement selon le nom de departement
         ok affiche le nom du  manager en cours pour chaque departement
-        Creer vue liste des employers courants par departements
-        Creer vue nombre des employers pour chaque departements
+        ok Creer vue liste des employers courants par departements
+        ok Creer vue nombre des employers pour chaque departements
 
 - EMPLOYES PAR DEPARTEMENT :
     -   Base:
@@ -83,4 +84,18 @@
                 ok nom Employer
                 ok age min
                 ok age max
-    -   HTML:
+    -   ListeEmployes:
+        HTML:
+        - tableau affiche
+            nombre employer
+            sexe
+            salaire moyen pour chaque emploi
+        CSS:
+            utiliser Bootstrap
+        Base:
+            Creer vue pour afficher les employees par sexe
+            Creer vue pour regrouper tous les salaires de chaque emploi
+            Creer vue pour calculer la moyenne des salaires de chaque emploi
+        Fonction:
+            afficher employees par sexe
+            afficher salaire moyen pour chaque emploi
