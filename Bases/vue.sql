@@ -56,3 +56,19 @@ ON vh.title = vf.title
 JOIN v_avg_salaries_par_emplois vag
 ON vh.title = vag.title;
 
+CREATE OR REPLACE VIEW v_salary_history AS
+SELECT salaries.emp_no, titles.title, 
+salaries.salary, departments.dept_name,
+salaries.from_date, salaries.to_date
+FROM salaries
+Join employees
+on employees.emp_no = salaries.emp_no
+Join titles
+on employees.emp_no = titles.emp_no
+Join dept_emp
+on employees.emp_no = dept_emp.emp_no
+Join departments
+on departments.dept_no = dept_emp.dept_no
+
+
+

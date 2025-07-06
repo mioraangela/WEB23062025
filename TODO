@@ -38,12 +38,15 @@
     -   Base:
         ok afficher l information de l employe selectionner selectionner
         ok afficher l historique du salaire et de l emploi occupe dans la fiche
+        ok Creer vue pour l historique de salaire
     - Fonction:
         ok creer fonction pour avoir l employe par idEmployees
-        creer fonction pour avoir l historique de salaire et de l emploie occuper par un employer
+        ok creer fonction pour avoir l historique de salaire 
+            ok et de l emploie occuper par un employer le plus long par date
     -   HTML : 
         ok fiche pour afficher le nom de l employe selectionner
         ok tableau affiche historique salaire et emploie occuper
+        ok mettre emploie le plus long 
     -   CSS:
         Bootstrap
 -   index :

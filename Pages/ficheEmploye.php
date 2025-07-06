@@ -3,6 +3,8 @@
     $idEmployer=$_GET['id'];
     $employer = getEmployeesParId($idEmployer);
     $salaires = getSalaryHistoryParId($idEmployer);
+    $longTimeEmploi = getLongTimeEmploi($idEmployer);
+    var_dump($longTimeEmploi);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +25,7 @@
         <p>Date de naissance: <?=$info['birth_date']?></p>
         <p>Sexe: <?=$info['gender']?></p>
         <p>Date de recrutement: <?=$info['hire_date']?></p>
+        <p>emploi le plus long: <?= $longTimeEmploi[0]['title']?> vers la date <?= $longTimeEmploi[0]['from_date']?> a <?= $longTimeEmploi[0]['to_date']?></p>
     <?php } ?>
         <p> Emploi occuper: <?= $salaires[0]['title']?></p>
     <br>

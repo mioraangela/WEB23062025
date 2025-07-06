@@ -293,5 +293,25 @@
         mysqli_free_result($req);
         return $result;
     }
+
+    function getLongTimeEmploi($idEmploye){
+        $bdd = dbconnect();
+        $sql = "SELECT * 
+            FROM v_salary_history sh
+            WHERE sh.to_date !='9999-01-01' && sh.emp_no = '%s'
+            ORDER BY DATEDIFF(to_date, from_date) DESC
+            LIMIT 1;
+        ";
+        $sql = sprintf($sql,$idEmploye);
+        $req = mysqli_query($bdd,$sql);
+        $result = array();
+        while ($news = mysqli_fetch_assoc($req)) {
+            $result[] = $news;
+        }
+        mysqli_free_result($req);
+        return $result;
+    }
+
+    
     
 ?>
