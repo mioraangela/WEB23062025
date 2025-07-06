@@ -248,7 +248,7 @@
         on departments.dept_no = dept_emp.dept_no
         Join employees
         on dept_emp.emp_no = employees.emp_no
-        Where departments.dept_no ='%s'
+        Where departments.dept_no ='%s'&& dept_emp.to_date = '9999-01-01'
         ";
         $sql = sprintf($sql, $idDepart);
         $req = mysqli_query($bdd, $sql);
