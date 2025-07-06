@@ -71,4 +71,19 @@ Join departments
 on departments.dept_no = dept_emp.dept_no
 
 
+CREATE OR REPLACE VIEW v_job_history AS
+SELECT salaries.emp_no, titles.title, 
+salaries.salary, departments.dept_name,
+titles.from_date, titles.to_date
+FROM titles
+Join employees
+on employees.emp_no = titles.emp_no
+Join salaries
+on employees.emp_no = salaries.emp_no
+Join dept_emp
+on employees.emp_no = dept_emp.emp_no
+Join departments
+on departments.dept_no = dept_emp.dept_no
+
+
 

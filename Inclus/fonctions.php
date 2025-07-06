@@ -297,8 +297,8 @@
     function getLongTimeEmploi($idEmploye){
         $bdd = dbconnect();
         $sql = "SELECT * 
-            FROM v_salary_history sh
-            WHERE sh.to_date !='9999-01-01' && sh.emp_no = '%s'
+            FROM v_job_history vj
+            WHERE vj.to_date !='9999-01-01' && vj.emp_no = '%s'
             ORDER BY DATEDIFF(to_date, from_date) DESC
             LIMIT 1;
         ";
