@@ -4,7 +4,6 @@
     $employer = getEmployeesParId($idEmployer);
     $salaires = getSalaryHistoryParId($idEmployer);
     $longTimeEmploi = getLongTimeEmploi($idEmployer);
-    var_dump($longTimeEmploi);
 ?>
 <!DOCTYPE html>
 <html lang="en">
