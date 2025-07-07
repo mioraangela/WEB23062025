@@ -10,13 +10,14 @@
         $nomDepartment = $_GET['departments'];
         $idDepart = getIdDepartment($nomDepartment);
         $fromDate = $_GET['date'];
-        changerDepartEmployer($idDepart,$nomDepartment,$fromDate,$idEmployer);
+        changerDepartEmployer($idDepart,$fromDate,$idEmployer);
     }
     $departments = afficherLesDepartements();
     $employer = getEmployeesParId($idEmployer);
     $salaires = getSalaryHistoryParId($idEmployer);
     $longTimeEmploi = getLongTimeEmploi($idEmployer);
     $count = count($longTimeEmploi);
+    $updates = getUpdateEmployer($idEmployer);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +41,8 @@
         <p>Date de naissance: <?=$info['birth_date']?></p>
         <p>Sexe: <?=$info['gender']?></p>
         <p>Date de recrutement: <?=$info['hire_date']?></p>
+        
+        <p>Nom de departement Occuper : <?= $updates[0]['dept_name']?> / Date Debut: <?= $updates[0]['from_date']?></p>
         <?php if($count == 0){?>
             <p> Pas de long duree de travail, employer en cours</p>
         <?php } else{ ?>
@@ -52,9 +55,12 @@
         <form action="">
             <select name="departments" id="departments">
                 <option value="">Choisisser le departement</option>
-                <?php foreach ($departments as $department) { ?>
+                <?php foreach ($departments as $department) { 
+                    if($department['dept_name']== $updates[0]['dept_name']){ 
+                        continue?>
+                    <?php } else { ?>
                     <option value="<?= $department['dept_name']?>"><?=$department['dept_name']?></option>
-                <?php }?>
+                <?php } }?>
             </select>
             <p>Date Debut <input type="date" name="date" id="date"></p>
             <input type="hidden" name="id" value="<?= $idEmployer?>">
@@ -66,7 +72,6 @@
         <tr>
             <th>Emploi occuper</th>
             <th>Salaire</th>
-            <th>Nom de departement</th>
             <th>Date debut</th>
             <th>Date fin</th>
         </tr>
@@ -74,7 +79,6 @@
             <tr>
                 <td><?= $salaire['title']?></td>
                 <td><?= $salaire['salary']?></td>
-                <td><?= $salaire['dept_name']?></td>
                 <td><?= $salaire['from_date']?></td>
                 <td><?= $salaire['to_date']?></td>
             </tr>

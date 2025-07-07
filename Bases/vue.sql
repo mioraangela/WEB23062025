@@ -91,6 +91,27 @@ CREATE OR REPLACE VIEW v_departments_par_nom AS
 SELECT *
 FROM departments;
 
-SELECT * 
-From v_liste_employer_depart v 
+
+UPDATE v_liste_employer_depart v 
+SET dept_no ='d005',dept_name='Development',from_date='2000-05-12' 
 WHERE v.emp_no ='10058';
+
+SELECT *
+FROM v_liste_employer_depart v
+WHERE v.emp_no ='10058';
+
+SELECT 
+D.dept_no,
+D.dept_name,
+E.emp_no,
+E.first_name,
+E.last_name,
+DE.from_date,
+DE.to_date
+FROM departments D
+JOIN dept_emp DE
+on D.dept_no = DE.dept_no
+JOIN employees E
+ON E.emp_no = DE.emp_no
+WHERE DE.to_date ='9999-01-01'
+AND E.emp_no ='10058';

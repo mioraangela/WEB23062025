@@ -312,15 +312,38 @@
         return $result;
     }
 
-    function changerDepartEmployer($departNo,$departName,$fromDate,$empNo){
+    function changerDepartEmployer($departNo,$fromDate,$empNo){
         $bdd = dbconnect();
-        $sql = "UPDATE v_liste_employer_depart v
-                SET dept_no ='%s',dept_name='%s',from_date='%s'
-                WHERE v.emp_no ='%s';
+        $sql = "UPDATE departments D
+            JOIN dept_emp DE
+            on D.dept_no = DE.dept_no
+            JOIN employees E
+            ON E.emp_no = DE.emp_no
+            SET DE.dept_no ='%s',DE.from_date='%s'
+            WHERE DE.emp_no ='%s' 
+            AND DE.to_date ='9999-01-01';
         ";
-        $sql = sprintf($sql,$departNo,$departName,$fromDate,$empNo);
+        $sql = sprintf($sql,$departNo,$fromDate,$empNo);
         echo $sql;
         $req = mysqli_query($bdd,$sql);
     }
+
+
+    function getUpdateEmployer($idEmploye){
+        $bdd = dbconnect();
+        $sql = "SELECT *
+            FROM v_liste_employer_depart v
+            WHERE v.emp_no ='%s';
+        ";
+        $sql = sprintf($sql,$idEmploye);
+        $req = mysqli_query($bdd,$sql);
+        $result = array();
+        while ($news = mysqli_fetch_assoc($req)) {
+            $result[] = $news;
+        }
+        mysqli_free_result($req);
+        return $result;
+    }
+    
     
 ?>
