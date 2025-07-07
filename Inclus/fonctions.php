@@ -21,7 +21,7 @@
         ";
         $sql = sprintf($sql, $nomDepartment);
         $req = mysqli_query($bdd,$sql);
-        $result = mysqli_fetch_assoc($req);
+        $result = mysqli_fetch_assoc($req)['dept_no'];
         mysqli_free_result($req);
         return $result; 
     }
@@ -192,7 +192,7 @@
     function getSalaryHistoryParId($idEmploye){
         $bdd = dbconnect();
         $sql = "SELECT salaries.emp_no, titles.title, 
-        salaries.salary, departments.dept_name,
+        salaries.salary, departments.dept_name, departments.dept_no,
         salaries.from_date, salaries.to_date
         FROM salaries
         Join employees
@@ -312,6 +312,15 @@
         return $result;
     }
 
-    
+    function changerDepartEmployer($departNo,$departName,$fromDate,$empNo){
+        $bdd = dbconnect();
+        $sql = "UPDATE v_liste_employer_depart v
+                SET dept_no ='%s',dept_name='%s',from_date='%s'
+                WHERE v.emp_no ='%s';
+        ";
+        $sql = sprintf($sql,$departNo,$departName,$fromDate,$empNo);
+        echo $sql;
+        $req = mysqli_query($bdd,$sql);
+    }
     
 ?>

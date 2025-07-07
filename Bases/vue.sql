@@ -5,6 +5,7 @@ D.dept_name,
 E.emp_no,
 E.first_name,
 E.last_name,
+DE.from_date,
 DE.to_date
 FROM departments D
 JOIN dept_emp DE
@@ -12,6 +13,7 @@ on D.dept_no = DE.dept_no
 JOIN employees E
 ON E.emp_no = DE.emp_no
 WHERE DE.to_date ='9999-01-01';
+
 
 CREATE OR REPLACE VIEW v_nb_employer_depart AS
 SELECT E.dept_no,
@@ -85,5 +87,10 @@ on employees.emp_no = dept_emp.emp_no
 Join departments
 on departments.dept_no = dept_emp.dept_no;
 
+CREATE OR REPLACE VIEW v_departments_par_nom AS
+SELECT *
+FROM departments;
 
-
+SELECT * 
+From v_liste_employer_depart v 
+WHERE v.emp_no ='10058';

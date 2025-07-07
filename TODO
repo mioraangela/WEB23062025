@@ -36,6 +36,7 @@
         Bootstrap
 - Fiche EMPLOYES :
     -   Base:
+        Changer le departement de l employer
         ok afficher l information de l employe selectionner selectionner
         ok afficher l historique du salaire et de l emploi occupe dans la fiche
         ok Creer vue pour l historique de salaire
@@ -43,10 +44,19 @@
         ok creer fonction pour avoir l employe par idEmployees
         ok creer fonction pour avoir l historique de salaire 
             ok et de l emploie occuper par un employer le plus long par date
+        creer fonction getIdDepartementParNom
+        creer fonction pour modifier
+            dept_no,dept_name,from_date 
+        de l employer par emp_no
     -   HTML : 
         ok fiche pour afficher le nom de l employe selectionner
         ok tableau affiche historique salaire et emploie occuper
-        ok mettre emploie le plus long 
+        ok mettre emploie le plus long
+        mettre un boutton "changer de departement" vers get changeDeparte=1
+            ok mettre liste deroulante choix departement en formulaire
+            ok formulaire date pour entrer date de debut
+
+        for
     -   CSS:
         Bootstrap
 -   index :
@@ -59,7 +69,7 @@
         ok formulaire entree nom Employer
         ok formulaire entree age min de type nombre
         ok formulaire entree age max type nombre
-        tableau afficher nom employe, nom departement, age
+        ok tableau afficher nom employe, nom departement, age
     -   CSS:
 -    affiche Employer:
     -   Base:

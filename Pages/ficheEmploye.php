@@ -1,6 +1,18 @@
 <?php 
     require("../Inclus/fonctions.php");
-    $idEmployer=$_GET['id'];
+    if(isset($_GET['idChange'])){
+         $idEmployer=$_GET['idChange'];
+    }
+    else{
+        $idEmployer=$_GET['id'];
+    }
+    if(isset($_GET['departments'])&& isset($_GET['date'])){
+        $nomDepartment = $_GET['departments'];
+        $idDepart = getIdDepartment($nomDepartment);
+        $fromDate = $_GET['date'];
+        changerDepartEmployer($idDepart,$nomDepartment,$fromDate,$idEmployer);
+    }
+    $departments = afficherLesDepartements();
     $employer = getEmployeesParId($idEmployer);
     $salaires = getSalaryHistoryParId($idEmployer);
     $longTimeEmploi = getLongTimeEmploi($idEmployer);
@@ -18,6 +30,9 @@
     <div>
         <a href="index.php">home</a>
     </div>
+    <a href="?changerDepart=1&&idChange=<?= $idEmployer?>">
+        <button>Changer de departement</button>
+    </a>
     <?php foreach($employer as $info){ ?>
         <p>Nom: <?= $info['last_name']?></p>
         <p>Prenom: <?=$info['first_name']?></p>
@@ -32,6 +47,20 @@
         <?php } ?>
     <?php } ?>
         <p> Emploi occuper: <?= $salaires[0]['title']?></p>
+    <br>
+    <?php if(isset($_GET['changerDepart'])){ ?>
+        <form action="">
+            <select name="departments" id="departments">
+                <option value="">Choisisser le departement</option>
+                <?php foreach ($departments as $department) { ?>
+                    <option value="<?= $department['dept_name']?>"><?=$department['dept_name']?></option>
+                <?php }?>
+            </select>
+            <p>Date Debut <input type="date" name="date" id="date"></p>
+            <input type="hidden" name="id" value="<?= $idEmployer?>">
+            <input type="submit" value="valider">
+        </form>
+    <?php }?>
     <br>
     <table border ='1' style="border-collapse: collapse">
         <tr>
