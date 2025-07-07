@@ -11,7 +11,7 @@ JOIN dept_emp DE
 on D.dept_no = DE.dept_no
 JOIN employees E
 ON E.emp_no = DE.emp_no
-WHERE DE.to_date ='9999-01-01'
+WHERE DE.to_date ='9999-01-01';
 
 CREATE OR REPLACE VIEW v_nb_employer_depart AS
 SELECT E.dept_no,
@@ -68,7 +68,7 @@ on employees.emp_no = titles.emp_no
 Join dept_emp
 on employees.emp_no = dept_emp.emp_no
 Join departments
-on departments.dept_no = dept_emp.dept_no
+on departments.dept_no = dept_emp.dept_no;
 
 
 CREATE OR REPLACE VIEW v_job_history AS
@@ -83,7 +83,7 @@ on employees.emp_no = salaries.emp_no
 Join dept_emp
 on employees.emp_no = dept_emp.emp_no
 Join departments
-on departments.dept_no = dept_emp.dept_no
+on departments.dept_no = dept_emp.dept_no;
 
 
 
