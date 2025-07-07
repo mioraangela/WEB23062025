@@ -58,6 +58,9 @@
         ok mettre en haut le departement de l employer et son date de debut
         ok filtrer la liste des selections departements a changer
             ok ne pas afficher departement actuelle
+        Comparer si la date de début du nouveau département est antérieur à la date du début de l'actuel'
+            si oui changer la date
+            si non message erreur date inserer une nouvelle date
     -   CSS:
         Bootstrap
 -   index :

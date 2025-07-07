@@ -1,16 +1,26 @@
 <?php 
     require("../Inclus/fonctions.php");
+    $error = 0;
     if(isset($_GET['idChange'])){
          $idEmployer=$_GET['idChange'];
     }
     else{
         $idEmployer=$_GET['id'];
     }
+    
+    $updates = getUpdateEmployer($idEmployer);
+    $actualDate = strtotime($updates[0]['from_date']);
     if(isset($_GET['departments'])&& isset($_GET['date'])){
         $nomDepartment = $_GET['departments'];
         $idDepart = getIdDepartment($nomDepartment);
         $fromDate = $_GET['date'];
-        changerDepartEmployer($idDepart,$fromDate,$idEmployer);
+        $updatedDate = strtotime($_GET['date']);
+        if($updatedDate < $actualDate){
+            $error += 1;
+        }
+        else{
+            changerDepartEmployer($idDepart,$fromDate,$idEmployer);   
+        }
     }
     $departments = afficherLesDepartements();
     $employer = getEmployeesParId($idEmployer);
@@ -42,7 +52,11 @@
         <p>Sexe: <?=$info['gender']?></p>
         <p>Date de recrutement: <?=$info['hire_date']?></p>
         
-        <p>Nom de departement Occuper : <?= $updates[0]['dept_name']?> / Date Debut: <?= $updates[0]['from_date']?></p>
+        <?php if($error > 0){ ?>
+            <p> error date insert again</p>
+        <?php } else { ?>
+            <p>Nom de departement Occuper : <?= $updates[0]['dept_name']?> / Date Debut: <?= $updates[0]['from_date']?></p>
+        <?php } ?>
         <?php if($count == 0){?>
             <p> Pas de long duree de travail, employer en cours</p>
         <?php } else{ ?>

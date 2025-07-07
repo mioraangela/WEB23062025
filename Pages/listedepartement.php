@@ -1,7 +1,7 @@
 <?php 
     require("../Inclus/fonctions.php");
     $departements = getCurrentManager();
-    
+    //var_dump($departements);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +33,7 @@
                 ?>
                     <tr>
                         <td><?= $departement['dept_no']?></td>
-                        <td><a href="employes.php?id=<?= $idDepart['dept_no']?>"><?= $nomDepart?></a></td>
+                        <td><a href="employes.php?id=<?= $idDepart?>"><?= $nomDepart?></a></td>
                         <td><?= $last_name?> <?= $first_name?> </td>
                         <td> <?=$departement['nb_employees']?></td>
                     </tr>
