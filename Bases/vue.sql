@@ -91,6 +91,17 @@ CREATE OR REPLACE VIEW v_departments_par_nom AS
 SELECT *
 FROM departments;
 
+CREATE OR REPLACE VIEW v_manager AS
+SELECT d.dept_no, d.dept_name,
+e.first_name, e.last_name
+FROM employees e
+Join dept_manager dm
+on e.emp_no = dm.emp_no
+Join departments d
+on d.dept_no = dm.dept_no
+WHERE dm.to_date ='9999-01-01'
+ORDER BY dm.from_date DESC
+LIMIT 1;
 
 UPDATE v_liste_employer_depart v 
 SET dept_no ='d005',dept_name='Development',from_date='2000-05-12' 
@@ -115,3 +126,31 @@ JOIN employees E
 ON E.emp_no = DE.emp_no
 WHERE DE.to_date ='9999-01-01'
 AND E.emp_no ='10058';
+
+UPDATE d.dept_no, d.dept_name, dm.emp_no
+FROM employees e
+Join dept_manager dm
+on e.emp_no = dm.emp_no
+Join departments d
+on d.dept_no = dm.dept_no
+SET e.emp_no ='%s'
+WHERE dm.to_date ='9999-01-01'
+AND d.dept_no ='%s'
+
+
+INSERT INTO dept_manager(dept_no, emp_no, from_date, to_date)
+VALUES('%s','%s','%s','9999-01-01');
+
+UPDATE dept_manager
+SET to_date ='9999-01-01'
+WHERE to_date = '2020-02-02'
+AND dept_no ='d001';
+
+SELECT d.dept_no, d.dept_name, dm.emp_no FROM employees e 
+Join dept_manager dm on e.emp_no = dm.emp_no 
+Join departments d on d.dept_no = dm.dept_no 
+WHERE dm.to_date ='9999-01-01' 
+AND d.dept_no ='d001'; 
+
+DELETE FROM dept_manager
+where dept_manager.emp_no ='10017';

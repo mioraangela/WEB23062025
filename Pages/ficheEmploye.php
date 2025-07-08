@@ -10,6 +10,13 @@
     
     $updates = getUpdateEmployer($idEmployer);
     $actualDate = strtotime($updates[0]['from_date']);
+    $Manager = getCurrentManagerParDepat($updates[0]['dept_no']);
+    if(isset($_GET['dateManager'])){
+        $dateManager = $_GET['dateManager'];
+        $idDepart = $updates[0]['dept_no'];
+        setCurrentManager($idDepart, $dateManager, $idEmployer);
+        
+    }
     if(isset($_GET['departments'])&& isset($_GET['date'])){
         $nomDepartment = $_GET['departments'];
         $idDepart = getIdDepartment($nomDepartment);
@@ -44,6 +51,10 @@
     <a href="?changerDepart=1&&idChange=<?= $idEmployer?>">
         <button>Changer de departement</button>
     </a>
+    <a href="?changerManager=1&&idChange=<?= $idEmployer?>">
+        <button>Devenir Manager</button>
+    </a>
+    <p>Manager de departement: <?= $Manager['last_name']?> <?= $Manager['first_name']?></p>
     <?php foreach($employer as $info){ ?>
         <p>Nom: <?= $info['last_name']?></p>
         <p>Prenom: <?=$info['first_name']?></p>
@@ -81,6 +92,15 @@
             <input type="submit" value="valider">
         </form>
     <?php }?>
+
+    <?php if(isset($_GET['changerManager'])){ ?>
+        <form action="">
+            <p>Date Debut Manager <input type="date" name="dateManager" id="dateManager"></p>
+            <input type="hidden" name="id" value="<?= $idEmployer?>">
+            <input type="submit" value="valider">
+        </form>
+    <?php }?>
+
     <br>
     <table border ='1' style="border-collapse: collapse">
         <tr>

@@ -40,6 +40,10 @@
         ok afficher l information de l employe selectionner selectionner
         ok afficher l historique du salaire et de l emploi occupe dans la fiche
         ok Creer vue pour l historique de salaire
+        Changer le nouveau manager
+            date debut
+            id Employer
+        Verifier le nouveau manager
     - Fonction:
         ok creer fonction pour avoir l employe par idEmployees
         ok creer fonction pour avoir l historique de salaire 
@@ -48,6 +52,7 @@
         ok creer fonction pour modifier
             ok dept_no,dept_name,from_date 
         ok de l employer par emp_no
+        creer fonction setCurrentManager
     -   HTML : 
         ok fiche pour afficher le nom de l employe selectionner
         ok tableau affiche historique salaire et emploie occuper
@@ -61,6 +66,9 @@
         ok Comparer si la date de début du nouveau département est antérieur à la date du début de l'actuel'
             ok si oui changer la date
             ok si non message erreur date inserer une nouvelle date
+        ok Mettre boutton "devenir Manager"
+            ok ouvrir un formulaire (Date de début).
+
     -   CSS:
         Bootstrap
 -   index :

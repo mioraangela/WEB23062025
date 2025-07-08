@@ -257,6 +257,27 @@
         return $result;
     }
 
+    function getCurrentManagerParDepat($idDepart){
+        $bdd = dbconnect();
+        $sql = "SELECT d.dept_no, d.dept_name,
+            e.first_name, e.last_name, v.nb_employees
+            FROM employees e
+            Join dept_manager dm
+            on e.emp_no = dm.emp_no
+            Join departments d
+            on d.dept_no = dm.dept_no
+            Join v_nb_employer_depart v
+            on d.dept_no = v.dept_no
+            WHERE dm.to_date ='9999-01-01'
+            AND d.dept_no ='%s';
+        ";
+        $sql = sprintf($sql,$idDepart);
+        $req = mysqli_query($bdd,$sql);
+        $result = mysqli_fetch_assoc($req);
+        mysqli_free_result($req);
+        return $result;
+    }
+    
     function getCurrentManager(){
         $bdd = dbconnect();
         $sql = "SELECT d.dept_no, d.dept_name,
@@ -279,6 +300,36 @@
         mysqli_free_result($req);
         return $result;
     }
+
+    function updateLastManager($fromDate,$idDepart){
+        $bdd = dbConnect();
+        $sql ="UPDATE dept_manager
+            SET to_date ='%s'
+            WHERE to_date = '9999-01-01'
+            AND dept_no ='%s';";
+        $sql = sprintf($sql, $fromDate,$idDepart);
+        echo $sql;
+        $req = mysqli_query($bdd,$sql);
+    }
+    function correctionManager($idEmploye){
+        $bdd = dbConnect();
+        $sql ="UPDATE dept_manager
+            SET to_date ='9999-01-01'
+            WHERE emp_no ='%s';";
+        $sql = sprintf($sql, $idEmploye);
+        $req = mysqli_query($bdd,$sql);
+    }
+    function setCurrentManager($idDepart, $fromDate ,$idEmploye){
+        $bdd = dbConnect();
+        updateLastManager($fromDate,$idDepart);
+        $sql ="INSERT INTO dept_manager(dept_no, emp_no, from_date, to_date)
+            VALUES('%s','%s','%s','9999-01-01');";
+        $sql = sprintf($sql,$idDepart,$idEmploye,$fromDate);
+        echo $sql;
+        $req = mysqli_query($bdd,$sql);
+        correctionManager($idEmploye);
+    }
+
 
     function getListEmplois(){
         $bdd = dbconnect();
